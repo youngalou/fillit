@@ -1,0 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    blueprint                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lyoung <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/03/15 13:25:00 by lyoung            #+#    #+#              #
+#    Updated: 2017/03/15 13:42:59 by lyoung           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Basic Process:
+
+1. Open and read first agrument file and create a matrix that houses each tetrimino.
+	- This will involve using open() and read() to:
+		a) verify that the given file is in valid format. (using a verif function)
+		b) determine how many tetriminos are given
+		c) create a 3D array that has contains a 2D matrix for each tetrimino
+		d) populate matrix with values of '#'
+
+Valid tetrimino is as follows:
+- 4 lines of 4 characters separated by a newline
+- Must have only '.' and '#' characters
+- Must have exactly 4 '#' (and therefor 12 '.')
+- Every '#' must be contacting another on at least one side.
