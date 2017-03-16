@@ -6,7 +6,7 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:52:41 by lyoung            #+#    #+#             */
-/*   Updated: 2017/03/16 13:49:35 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/03/16 13:38:05 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	fill_array(int fd, int count, char ***array)
 	i = 0;
 	while (count > 0)
 	{
+		printf("count = %d\n", count);
 		read(fd, &buff, 21);
 		printf("%s", buff);
 //		*array = ft_strsplit(buff, '\n');
