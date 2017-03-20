@@ -25,38 +25,80 @@ char	*ft_getstr(char *file)
 	return (res);
 }
 
-int		ft_checktet(char *str)
+int		ft_maincheck(char *str)
 {
 	int i;
-	int	line_flag;
-	int block_flag;
+	int j;
 	int count;
+	char *sub;
 
 	i = 0;
-	line_flag = 0;
-	block_flag = 0;
-	count = 0;
-	while (i < 84)
+	while (str[i] != '\0')
 	{
-		printf("%c", str[i]);
-		if (str[i] != '\n' && str[i] != '.' && str[i] != '#')
-			return (0);
-		if (line_flag == 4 && (str[i] != '\n'))
-			return (0);
-		if (block_flag == 4 && (str[i] && str[i + 1] != '\n'))
-			return (0);
-		if (line_flag == 4)
+		sub = ft_strsub(str, i, 21);
+		j = 0;
+		count = 0;
+		while (sub[j] != '\0')
 		{
-			block_flag++;
-			line_flag = 0;
+			if (sub[j] != '#' && sub[j] != '.' && sub[j] != '\n')
+				return (0);
+			if (sub[j] == '#')
+				count++;
+			j++;
 		}
-		i++;
-		line_flag++;
+		if (ft_nlcheck(sub) == 0)
+			return (0);
+		if (ft_shapecheck(sub) == 0)
+			return (0);
+		if (count != 4)
+			return (0);
+		i = i + 21;
 	}
 	return (1);
-}	
+}
 
-/*The logic is still a bit off, but this is what I'd like to work from*/
+int		ft_nlcheck(char *str)
+{
+	int i;
+
+	i = 4;
+	while (i != 19)
+	{
+		if (str[i] != '\n')
+			return (0);
+		i += 5;
+	}
+	if (i == 19 && str[i] != '\n' && (str[i + 1] != '\n' || str[i + 1] != '\0'))
+		return (0);
+	return (1);
+}
+
+int		ft_shapecheck(char *str)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (i < 20)
+	{
+		if (str[i] == '#')
+		{
+			if ((i + 1) < 20 && str[i + 1] == '#')
+				count++;
+			if ((i - 1) >= 0 && str[i - 1] == '#')
+				count++;
+			if ((i + 5) < 20 && str[i + 5] == '#')
+				count++;
+			if ((i - 5) >= 0 && str[i - 5] == '#')
+				count++;
+		}
+		i++;
+	}
+	if (count == 6 || count == 8)
+		return (1);
+	return (0);
+}
 
 int		main(int ac, char **av)
 {
@@ -65,6 +107,6 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		res = ft_getstr(av[1]);
-		printf("%d\n", ft_checktet(res));
+		printf("Main check: %d\n", ft_maincheck(res));
 	}
 }

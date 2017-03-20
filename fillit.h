@@ -17,4 +17,9 @@
 # include <fcntl.h>
 # include "libft.h"
 
+char	*ft_getstr(char *file);
+int		ft_maincheck(char *str);
+int		ft_nlcheck(char *str);
+int		ft_shapecheck(char *str);
+
 #endif
