@@ -6,7 +6,7 @@
 /*   By: rvinnako <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 12:14:03 by rvinnako          #+#    #+#             */
-/*   Updated: 2017/03/17 12:45:59 by rvinnako         ###   ########.fr       */
+/*   Updated: 2017/03/21 10:52:14 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ char	*ft_getstr(char *file)
 
 int		ft_maincheck(char *str)
 {
-	int i;
-	int j;
-	int count;
-	char *sub;
+	int		i;
+	int		j;
+	int		count;
+	char	*sub;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -46,11 +46,7 @@ int		ft_maincheck(char *str)
 				count++;
 			j++;
 		}
-		if (ft_nlcheck(sub) == 0)
-			return (0);
-		if (ft_shapecheck(sub) == 0)
-			return (0);
-		if (count != 4)
+		if (ft_nlcheck(sub) == 0 || ft_shapecheck(sub) == 0 || count != 4)
 			return (0);
 		i = i + 21;
 	}
@@ -59,7 +55,7 @@ int		ft_maincheck(char *str)
 
 int		ft_nlcheck(char *str)
 {
-	int i;
+	int		i;
 
 	i = 4;
 	while (i != 19)
@@ -75,8 +71,8 @@ int		ft_nlcheck(char *str)
 
 int		ft_shapecheck(char *str)
 {
-	int	count;
-	int	i;
+	int		count;
+	int		i;
 
 	count = 0;
 	i = 0;
