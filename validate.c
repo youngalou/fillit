@@ -99,14 +99,3 @@ int		ft_shapecheck(char *str)
 		return (1);
 	return (0);
 }
-
-int		main(int ac, char **av)
-{
-	char *res;
-
-	if (ac == 2)
-	{
-		res = ft_getstr(av[1]);
-		printf("Main check: %d\n", ft_maincheck(res));
-	}
-}
