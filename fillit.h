@@ -21,5 +21,8 @@ char	*ft_getstr(char *file);
 int		ft_maincheck(char *str);
 int		ft_nlcheck(char *str);
 int		ft_shapecheck(char *str);
+char	*set_str(char *str);
+char	**set_2D_array(char *str);
+char	**set_letter(char **map);
 
 #endif

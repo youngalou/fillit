@@ -12,16 +12,10 @@
 
 #include "fillit.h"
 
-char	*set_str(char *file)
+char	*set_str(char *str)
 {
-	int		fd;
-	char	buff[545];
-	char	*str;
 	int		i;
 
-	fd = open(file, O_RDONLY, S_IRUSR);
-	read(fd, &buff, 545);
-	str = ft_strdup(buff);
 	i = 0;
 	while (str[i])
 	{
@@ -40,6 +34,29 @@ char	**set_2D_array(char *str)
 	return (map);
 }
 
+char	**set_letter(char **map)
+{
+	int		i;
+	int     j;
+	char	c;
+
+	i = 0;
+	c = 'A';
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '#')
+				map[i][j] = c; 
+			j++;
+		}
+		c = c + 1;
+		i++;
+	}
+	return (map);
+}
+
 int		main(int argc, char **argv)
 {
 	char	**map;
@@ -48,7 +65,7 @@ int		main(int argc, char **argv)
 		ft_putstr("usage: ./fillit source_file\n");
 		return (0);
 	}
-	map = set_2D_array(set_str(argv[1]));
+	map = set_letter(set_2D_array(set_str(ft_getstr(argv[1]))));
 	while (*map)
 	{
 		ft_putstr(*map);
