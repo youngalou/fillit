@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/15 13:53:25 by lyoung            #+#    #+#             */
-/*   Updated: 2017/03/24 11:55:16 by lyoung           ###   ########.fr       */
+/*   Created: 2017/03/23 15:40:24 by lyoung            #+#    #+#             */
+/*   Updated: 2017/03/24 11:54:24 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft.h"
+#include "fillit.h"
 
-char	*ft_getstr(char *file);
-int		ft_maincheck(char *str);
-int		ft_nlcheck(char *str);
-int		ft_shapecheck(char *str);
-char	**set_array(char *str);
-void	set_letter(char **map);
-void	trim_nl(char **map);
-void	isolate_tet(char **map);
-
-#endif
+int		main(int argc, char **argv)
+{
+	char	**map;
+	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit source_file\n");
+		return (0);
+	}
+	map = set_array(ft_getstr(argv[1]));
+	trim_nl(map);
+	isolate_tet(map);
+	set_letter(map);
+	while (*map)
+	{
+		ft_putstr(*map);
+		ft_putchar('\n');
+		map++;
+	}
+	return (0);
+}

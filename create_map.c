@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2D_array.c                                         :+:      :+:    :+:   */
+/*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 11:25:31 by lyoung            #+#    #+#             */
-/*   Updated: 2017/03/23 11:51:38 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/03/24 11:53:42 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*set_str(char *str)
+char	**set_array(char *str)
 {
 	int		i;
+	char	**map;
 
 	i = 0;
 	while (str[i])
@@ -23,18 +24,11 @@ char	*set_str(char *str)
 			str[i] = '%';
 		i++;
 	}
-	return (str);
-}
-
-char	**set_2D_array(char *str)
-{
-	char	**map;
-
 	map = ft_strsplit(str, '%');
 	return (map);
 }
 
-char	**set_letter(char **map)
+void	set_letter(char **map)
 {
 	int		i;
 	int     j;
@@ -54,23 +48,31 @@ char	**set_letter(char **map)
 		c = c + 1;
 		i++;
 	}
-	return (map);
 }
 
-int		main(int argc, char **argv)
+void	trim_nl(char **map)
 {
-	char	**map;
-	if (argc != 2)
+	int		i;
+	int		j;
+	int		a;
+	char	tmp[20];
+
+	i = 0;
+	while (map[i])
 	{
-		ft_putstr("usage: ./fillit source_file\n");
-		return (0);
+		ft_bzero(tmp, 20);
+		j = 0;
+		a = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '\n')
+				j++;
+			tmp[a] = map[i][j];
+			j++;
+			a++;
+		}
+		ft_bzero(map[i], 20);
+		ft_strcpy(map[i], tmp);
+		i++;
 	}
-	map = set_letter(set_2D_array(set_str(ft_getstr(argv[1]))));
-	while (*map)
-	{
-		ft_putstr(*map);
-		ft_putchar('\n');
-		map++;
-	}
-	return (0);
 }
