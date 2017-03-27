@@ -12,41 +12,6 @@
 
 #include "fillit.h"
 
-/*
-I-Tiles
-1. ####
-2. #...#...#...#
-
-J-Tiles
-1. ##..#...#
-2. ###...#
-3. .#...#..##
-4. #...###
-
-L-Tiles
-1. ##...#...#
-2. ..#.###
-3. #...#...##
-4. ###.#
-
-T-Tiles
-1. #...##..#
-2. ###..#
-3. .#..##...#
-4. .#..###
-
-Z-Tiles
-1. .#..##..#
-2. ##...##
-
-S-Tiles
-1. .##.##
-2. #...##...#
-
-O-Tile
-1. ##..##
-*/
-
 void	store_shapes(char tab[20][15])
 {
 	int		i;
@@ -100,13 +65,41 @@ int		find_shape(const char *big, const char *little)
 	return (0);
 }
 
-void	isolate_tet(char **map)
+void	trim_nl(char **map)
+{
+	int		i;
+	int		j;
+	int		a;
+	char	tmp[20];
+
+	i = 0;
+	while (map[i])
+	{
+		ft_bzero(tmp, 20);
+		j = 0;
+		a = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '\n')
+				j++;
+			tmp[a] = map[i][j];
+			j++;
+			a++;
+		}
+		ft_bzero(map[i], 20);
+		ft_strcpy(map[i], tmp);
+		i++;
+	}
+}
+
+char	**isolate_tet(char **map)
 {
 	char	tab[20][15];
 	int		i;
 	int		j;
 
 	store_shapes(tab);
+	trim_nl(map);
 	i = 0;
 	while (map[i])
 	{
@@ -122,4 +115,5 @@ void	isolate_tet(char **map)
 		}
 		i++;
 	}
+	return (map);
 }

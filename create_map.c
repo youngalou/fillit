@@ -12,6 +12,18 @@
 
 #include "fillit.h"
 
+char	*ft_getstr(char *file)
+{
+	int		fd;
+	char	*res;
+	char	buff[545];
+
+	fd = open(file, O_RDONLY, S_IRUSR);
+	read(fd, &buff, 545);
+	res = ft_strdup(buff);
+	return (res);
+}
+
 char	**set_array(char *str)
 {
 	int		i;
@@ -28,7 +40,7 @@ char	**set_array(char *str)
 	return (map);
 }
 
-void	set_letter(char **map)
+char	**set_letter(char **map)
 {
 	int		i;
 	int     j;
@@ -48,31 +60,5 @@ void	set_letter(char **map)
 		c = c + 1;
 		i++;
 	}
-}
-
-void	trim_nl(char **map)
-{
-	int		i;
-	int		j;
-	int		a;
-	char	tmp[20];
-
-	i = 0;
-	while (map[i])
-	{
-		ft_bzero(tmp, 20);
-		j = 0;
-		a = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == '\n')
-				j++;
-			tmp[a] = map[i][j];
-			j++;
-			a++;
-		}
-		ft_bzero(map[i], 20);
-		ft_strcpy(map[i], tmp);
-		i++;
-	}
+	return (map);
 }

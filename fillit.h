@@ -22,8 +22,11 @@ int		ft_maincheck(char *str);
 int		ft_nlcheck(char *str);
 int		ft_shapecheck(char *str);
 char	**set_array(char *str);
-void	set_letter(char **map);
-void	trim_nl(char **map);
-void	isolate_tet(char **map);
+char	**set_letter(char **map);
+char	**isolate_tet(char **map);
+int		count_tets(char *file);
+int		min_square_size(int nb_tets);
+char	**new_square(int size);
+void	print_square(char **square, int size);
 
 #endif

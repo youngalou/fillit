@@ -12,18 +12,6 @@
 
 #include "fillit.h"
 
-char	*ft_getstr(char *file)
-{
-	int		fd;
-	char	*res;
-	char	buff[545];
-
-	fd = open(file, O_RDONLY, S_IRUSR);
-	read(fd, &buff, 545);
-	res = ft_strdup(buff);
-	return (res);
-}
-
 int		ft_maincheck(char *str)
 {
 	int		i;

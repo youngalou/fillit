@@ -14,21 +14,23 @@
 
 int		main(int argc, char **argv)
 {
+	int		size;
+
 	char	**map;
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fillit source_file\n");
 		return (0);
 	}
-	map = set_array(ft_getstr(argv[1]));
-	trim_nl(map);
-	isolate_tet(map);
-	set_letter(map);
+	map = set_letter(isolate_tet(set_array(ft_getstr(argv[1]))));
 	while (*map)
 	{
 		ft_putstr(*map);
 		ft_putchar('\n');
 		map++;
 	}
+	ft_putstr("---------------------\n");
+	size = min_square_size(count_tets(argv[1]));
+	print_square(new_square(size), size);
 	return (0);
 }
