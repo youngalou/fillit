@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h> //Make sure to remove
 # include "libft.h"
 
 char	*ft_getstr(char *file);
@@ -28,5 +29,8 @@ int		count_tets(char *file);
 int		min_square_size(int nb_tets);
 char	**new_square(int size);
 void	print_square(char **square, int size);
+void	place_tet(char **square, char *tet, int y, int x);
+int		check_place(char **square, char *tet, int y, int x);
+void	reset_square(char **square);
 
 #endif
