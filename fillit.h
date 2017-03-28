@@ -28,9 +28,11 @@ char	**isolate_tet(char **map);
 int		count_tets(char *file);
 int		min_square_size(int nb_tets);
 char	**new_square(int size);
+void	delete_square(char **square);
 void	print_square(char **square, int size);
 void	place_tet(char **square, char *tet, int y, int x);
 int		check_place(char **square, char *tet, int y, int x);
 void	reset_square(char **square);
+void	find_solution(char **map, int size);
 
 #endif

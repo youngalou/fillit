@@ -65,6 +65,38 @@ char	**new_square(int size)
 	return (square);
 }
 
+void	delete_square(char **square)
+{
+	int		i;
+
+	i = 0;
+	while (square[i])
+	{
+		free(square[i]);
+		i++;
+	}
+	free(square);
+}
+
+void	reset_square(char **square)
+{
+	int		i;
+	int		j;
+	
+	i = 0;
+	while (i < 5)
+	{
+		j = 0;
+		while (j < 5)
+		{
+			if (square[i][j] != '\0')
+				square[i][j] = '.';
+			j++;
+		}
+		i++;
+	}
+}
+
 void	print_square(char **square, int size)
 {
 	int		i;

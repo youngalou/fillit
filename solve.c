@@ -37,32 +37,15 @@ int		check_place(char **square, char *tet, int y, int x)
 		}
 		if (!square[y][x] && tet[i] != '.')
 			return (0);
+		if (square[y][x] && square[y][x] != '.' && tet[i] != '.')
+			return (0);
 		i++;
 		x++;
 	}
 	return (1);
 }
 
-void	reset_square(char **square)
-{
-	int		i;
-	int		j;
-	
-	i = 0;
-	while (i < 5)
-	{
-		j = 0;
-		while (j < 5)
-		{
-			if (square[i][j] != '\0')
-				square[i][j] = '.';
-			j++;
-		}
-		i++;
-	}
-}
-
-/*void	remove_tet(char **square, char c)
+void	remove_tet(char **square, char c)
 {
 	int		y;
 	int		x;
@@ -81,20 +64,48 @@ void	reset_square(char **square)
 	}
 }
 
-void	algorithm(char **map)
+int		algorithm(char **square, char **map, int y, int x)
 {
-	int		y;
-	int		x;
+	int		i;
+
+	i = 0;
+	if (!map[i])
+		return (1);
+	ft_putstr("--------------\n");
+	while (square[y])
+	{
+		x = 0;
+		while (square[y][x])
+		{
+			printf("y = %d, x = %d | tet = %s\n", y, x, map[i]);
+			if (check_place(square, map[i], y, x))
+			{
+				place_tet(square, map[i], y, x);
+				print_square(square, 5);
+				if (algorithm(square, &map[i + 1], 0, 0))
+					return (1);
+				else
+					remove_tet(square, i + 65);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+void	find_solution(char **map, int size)
+{
 	char	**square;
 
-	y = 0;
-	x = 0;
-	square = set_min_square(map);
-	while (check_solution(square))
+	square = new_square(size);
+	print_square(square, size);
+	while (!algorithm(square, map, 0, 0))
 	{
-		if (check_placement(square, map[i], y, x))
-		{
-			place_tet(square, map[i], y, x);
-		}
+		delete_square(square);
+		size++;
+		square = new_square(size);
+		print_square(square, size);
 	}
-} */
+	print_square(square, size);
+}
