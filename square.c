@@ -43,7 +43,7 @@ char	**new_square(int size)
 	int		i;
 	int		j;
 
-	square = (char**)malloc(sizeof(square) * (size + 3));
+	square = (char**)malloc(sizeof(square) * (size + 4));
 	i = 0;
 	while (i < size + 3)
 	{
@@ -51,6 +51,7 @@ char	**new_square(int size)
 		ft_bzero(square[i], size + 3);
 		i++;
 	}
+	square[i] = 0;
 	i = 0;
 	while (i < size)
 	{

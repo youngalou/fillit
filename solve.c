@@ -64,25 +64,23 @@ void	remove_tet(char **square, char c)
 	}
 }
 
-int		algorithm(char **square, char **map, int y, int x)
+int		algorithm(char **square, char **map, int size, int i)
 {
-	int		i;
+	int		y;
+	int		x;
 
-	i = 0;
 	if (!map[i])
 		return (1);
-	ft_putstr("--------------\n");
-	while (square[y])
+	y = 0;
+	while (y < size)
 	{
 		x = 0;
-		while (square[y][x])
+		while (x < size)
 		{
-			printf("y = %d, x = %d | tet = %s\n", y, x, map[i]);
 			if (check_place(square, map[i], y, x))
 			{
 				place_tet(square, map[i], y, x);
-				print_square(square, 5);
-				if (algorithm(square, &map[i + 1], 0, 0))
+				if (algorithm(square, map, size, i + 1))
 					return (1);
 				else
 					remove_tet(square, i + 65);
@@ -100,12 +98,12 @@ void	find_solution(char **map, int size)
 
 	square = new_square(size);
 	print_square(square, size);
-	while (!algorithm(square, map, 0, 0))
+	while (algorithm(square, map, size, 0) == 0)
 	{
 		delete_square(square);
 		size++;
 		square = new_square(size);
-		print_square(square, size);
 	}
 	print_square(square, size);
+	delete_square(square);
 }
