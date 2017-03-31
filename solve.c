@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/24 09:44:19 by lyoung            #+#    #+#             */
+/*   Updated: 2017/03/26 12:51:55 by lyoung           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 void	place_tet(char **square, char *tet, int y, int x)
@@ -97,7 +109,6 @@ void	find_solution(char **map, int size)
 	char	**square;
 
 	square = new_square(size);
-	print_square(square, size);
 	while (algorithm(square, map, size, 0) == 0)
 	{
 		delete_square(square);

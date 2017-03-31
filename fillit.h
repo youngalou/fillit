@@ -15,24 +15,21 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h> //Make sure to remove
 # include "libft.h"
 
 char	*ft_getstr(char *file);
 int		ft_maincheck(char *str);
-int		ft_nlcheck(char *str);
-int		ft_shapecheck(char *str);
 char	**set_array(char *str);
-char	**set_letter(char **map);
 char	**isolate_tet(char **map);
+char	**set_letter(char **map);
 int		count_tets(char *file);
 int		min_square_size(int nb_tets);
 char	**new_square(int size);
 void	delete_square(char **square);
 void	print_square(char **square, int size);
+void	reset_square(char **square);
 void	place_tet(char **square, char *tet, int y, int x);
 int		check_place(char **square, char *tet, int y, int x);
-void	reset_square(char **square);
 void	find_solution(char **map, int size);
 
 #endif

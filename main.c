@@ -22,6 +22,11 @@ int		main(int argc, char **argv)
 		ft_putstr("usage: ./fillit source_file\n");
 		return (0);
 	}
+	if (ft_maincheck(ft_getstr(argv[1])) == 0)
+	{
+		ft_putstr("error\n");
+		return (0);
+	}
 	map = set_letter(isolate_tet(set_array(ft_getstr(argv[1]))));
 	size = min_square_size(count_tets(argv[1]));
 	find_solution(map, size);
