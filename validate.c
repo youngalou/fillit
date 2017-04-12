@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 int		ft_nlcheck(char *str)
 {
@@ -23,9 +24,27 @@ int		ft_nlcheck(char *str)
 			return (0);
 		i += 5;
 	}
-	if (i == 19 && str[i] != '\n' && (str[i + 1] != '\n' || str[i + 1] != '\0'))
+	if (i == 19 && str[i] != '\n' && str[i + 1] != '\n')
 		return (0);
 	return (1);
+}
+
+int		ft_countcheck(char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (i < 20)
+	{
+		if (str[i] == '#')
+			count++;
+		i++;
+	}
+	if (count == 4)
+		return (1);
+	return (0);
 }
 
 int		ft_shapecheck(char *str)
@@ -62,6 +81,10 @@ int		ft_maincheck(char *str)
 	int		count;
 	char	*sub;
 
+	if (*str == '\0')
+		return (0);
+	if (str[ft_strlen(str) - 1] == '\n' && str[ft_strlen(str) - 2] == '\n')
+		return (0);
 	i = 0;
 	while (str[i] != '\0')
 	{
