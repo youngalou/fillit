@@ -6,7 +6,7 @@
 /*   By: rvinnako <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 12:14:03 by rvinnako          #+#    #+#             */
-/*   Updated: 2017/03/24 11:31:23 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/14 13:39:49 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		ft_maincheck(char *str)
 	int		count;
 	char	*sub;
 
-	if (*str == '\0')
+	if (!*str)
 		return (0);
 	if (str[ft_strlen(str) - 1] == '\n' && str[ft_strlen(str) - 2] == '\n')
 		return (0);

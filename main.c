@@ -6,7 +6,7 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 15:40:24 by lyoung            #+#    #+#             */
-/*   Updated: 2017/03/24 11:54:24 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/14 12:37:39 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./fillit source_file\n");
+		ft_putstr("usage: ./fillit [source_file]\n");
 		return (0);
 	}
 	if (ft_maincheck(ft_getstr(argv[1])) == 0)

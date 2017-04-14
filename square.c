@@ -21,7 +21,7 @@ int		count_tets(char *file)
 	fd = open(file, O_RDONLY, S_IRUSR);
 	bytes = read(fd, &buff, 545);
 	close(fd);
-	return (bytes / 20);
+	return (bytes / 20); // fix so that you are dividing by 21
 }
 
 int		min_square_size(int nb_tets)
