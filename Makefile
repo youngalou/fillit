@@ -6,7 +6,7 @@
 #    By: lyoung <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/14 11:49:51 by lyoung            #+#    #+#              #
-#    Updated: 2017/04/14 12:32:54 by lyoung           ###   ########.fr        #
+#    Updated: 2017/04/18 12:53:31 by lyoung           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ all: $(NAME)
 
 $(OBJ): %.o: %.c
 	@gcc -c $(CFLAGS) $< -o $@
-	@echo "\033[32m- fillit object file created\033[0m"
 
 $(LIBFT):
 	@make -C libft
@@ -42,6 +41,7 @@ $(NAME): $(OBJ) $(LIBFT)
 
 clean:
 	@rm -rf $(OBJ)
+	@make -C libft clean
 	@echo "\033[31m- fillit object files removed\033[0m"
 
 fclean: clean 
