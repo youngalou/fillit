@@ -6,12 +6,11 @@
 /*   By: rvinnako <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 12:14:03 by rvinnako          #+#    #+#             */
-/*   Updated: 2017/04/14 13:39:49 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/18 11:23:20 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int		ft_nlcheck(char *str)
 {
@@ -24,7 +23,8 @@ int		ft_nlcheck(char *str)
 			return (0);
 		i += 5;
 	}
-	if (i == 19 && str[i] != '\n' && str[i + 1] != '\n')
+	if (i == 19 && (str[i] != '\n' ||
+				(str[i + 1] != '\n' && str[i + 1] != '\0')))
 		return (0);
 	return (1);
 }
@@ -74,6 +74,20 @@ int		ft_shapecheck(char *str)
 	return (0);
 }
 
+int		check_next(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (i < 20)
+	{
+		if (!str[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int		ft_maincheck(char *str)
 {
 	int		i;
@@ -86,12 +100,12 @@ int		ft_maincheck(char *str)
 	if (str[ft_strlen(str) - 1] == '\n' && str[ft_strlen(str) - 2] == '\n')
 		return (0);
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		sub = ft_strsub(str, i, 21);
 		j = 0;
 		count = 0;
-		while (sub[j] != '\0')
+		while (sub[j])
 		{
 			if (sub[j] != '#' && sub[j] != '.' && sub[j] != '\n')
 				return (0);

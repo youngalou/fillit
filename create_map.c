@@ -6,7 +6,7 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 11:25:31 by lyoung            #+#    #+#             */
-/*   Updated: 2017/04/14 12:57:54 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/18 10:35:33 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_getstr(char *file)
 
 	fd = open(file, O_RDONLY, S_IRUSR);
 	read(fd, &buff, 545);
-	res = ft_strdup(buff);
+	res = ft_strndup(buff, 545);
 	return (res);
 }
 
