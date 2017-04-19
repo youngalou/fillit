@@ -6,7 +6,7 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 11:25:31 by lyoung            #+#    #+#             */
-/*   Updated: 2017/04/18 10:35:33 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/19 10:36:26 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ char	*ft_getstr(char *file)
 	read(fd, &buff, 545);
 	res = ft_strndup(buff, 545);
 	return (res);
+}
+
+int		count_tets(char *file)
+{
+	int		fd;
+	int		bytes;
+	char	buff[545];
+
+	fd = open(file, O_RDONLY, S_IRUSR);
+	bytes = read(fd, &buff, 545);
+	close(fd);
+	return (bytes / 21);
 }
 
 char	**set_array(char *str)
@@ -43,7 +55,7 @@ char	**set_array(char *str)
 char	**set_letter(char **map)
 {
 	int		i;
-	int     j;
+	int		j;
 	char	c;
 
 	i = 0;
@@ -54,7 +66,7 @@ char	**set_letter(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == '#')
-				map[i][j] = c; 
+				map[i][j] = c;
 			j++;
 		}
 		c = c + 1;

@@ -6,23 +6,11 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 13:49:24 by lyoung            #+#    #+#             */
-/*   Updated: 2017/03/24 14:38:12 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/19 10:46:45 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int		count_tets(char *file)
-{
-	int		fd;
-	int		bytes;
-	char	buff[545];
-
-	fd = open(file, O_RDONLY, S_IRUSR);
-	bytes = read(fd, &buff, 545);
-	close(fd);
-	return (bytes / 20); // fix so that you are dividing by 21
-}
 
 int		min_square_size(int nb_tets)
 {
@@ -34,7 +22,6 @@ int		min_square_size(int nb_tets)
 	while (area > (min * min))
 		min++;
 	return (min);
-
 }
 
 char	**new_square(int size)
@@ -83,7 +70,7 @@ void	reset_square(char **square)
 {
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	while (i < 5)
 	{

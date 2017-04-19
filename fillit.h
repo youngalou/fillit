@@ -6,7 +6,7 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:53:25 by lyoung            #+#    #+#             */
-/*   Updated: 2017/04/18 10:32:07 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/19 10:32:45 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "./libft/libft.h"
-# include <stdio.h> //make sure to remove!!!
 
 char	*ft_getstr(char *file);
 int		ft_maincheck(char *str);

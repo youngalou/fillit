@@ -6,17 +6,14 @@
 /*   By: lyoung <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 11:55:12 by lyoung            #+#    #+#             */
-/*   Updated: 2017/03/24 11:40:33 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/19 10:30:06 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	store_shapes(char tab[20][15])
+void	store_shapes(char tab[20][15], int i)
 {
-	int		i;
-
-	i = 0;
 	while (i < 20)
 	{
 		ft_bzero(tab[i], 15);
@@ -98,7 +95,7 @@ char	**isolate_tet(char **map)
 	int		i;
 	int		j;
 
-	store_shapes(tab);
+	store_shapes(tab, 0);
 	trim_nl(map);
 	i = 0;
 	while (map[i])

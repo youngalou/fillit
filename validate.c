@@ -6,7 +6,7 @@
 /*   By: rvinnako <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 12:14:03 by rvinnako          #+#    #+#             */
-/*   Updated: 2017/04/18 11:23:20 by lyoung           ###   ########.fr       */
+/*   Updated: 2017/04/19 11:01:16 by lyoung           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ int		ft_nlcheck(char *str)
 
 int		ft_countcheck(char *str)
 {
-	int i;
-	int count;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
-	while (i < 20)
+	while (str[i])
 	{
+		if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
+			return (0);
 		if (str[i] == '#')
 			count++;
 		i++;
@@ -92,7 +94,6 @@ int		ft_maincheck(char *str)
 {
 	int		i;
 	int		j;
-	int		count;
 	char	*sub;
 
 	if (!*str)
@@ -104,16 +105,8 @@ int		ft_maincheck(char *str)
 	{
 		sub = ft_strsub(str, i, 21);
 		j = 0;
-		count = 0;
-		while (sub[j])
-		{
-			if (sub[j] != '#' && sub[j] != '.' && sub[j] != '\n')
-				return (0);
-			if (sub[j] == '#')
-				count++;
-			j++;
-		}
-		if (ft_nlcheck(sub) == 0 || ft_shapecheck(sub) == 0 || count != 4)
+		if (ft_nlcheck(sub) == 0 || ft_shapecheck(sub) == 0
+				|| ft_countcheck(sub) == 0)
 			return (0);
 		i = i + 21;
 	}
